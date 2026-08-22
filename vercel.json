@@ -1,3 +1,10 @@
 {
-  "version": 2
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/hero.jpg",
+      "destination": "https://grjwhhkubrcyevwj.public.blob.vercel-storage.com/ch-ashen-kappa-kakao-thumbnail.jpg",
+      "permanent": false
+    }
+  ]
 }
