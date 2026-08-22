@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>자동차보험 전 보험사 비교 | 이충학 지점장</title>
+<meta name="description" content="30초 설문으로 자동차보험 전 보험사 비교 상담을 시작하세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="자동차보험 전 보험사 비교 | 이충학 지점장">
+<meta property="og:description" content="30초 설문으로 보험료를 비교하고 내게 맞는 자동차보험 상담을 받아보세요.">
+<meta property="og:image" content="https://grjwhhkubrcyevwj.public.blob.vercel-storage.com/ch-ashen-kappa-kakao-thumbnail.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="자동차보험 전 보험사 비교 | 이충학 지점장">
+<meta name="twitter:description" content="30초 설문으로 보험료를 비교하고 내게 맞는 자동차보험 상담을 받아보세요.">
+<meta name="twitter:image" content="https://grjwhhkubrcyevwj.public.blob.vercel-storage.com/ch-ashen-kappa-kakao-thumbnail.jpg">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eef3f8;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif;color:#10233d}.wrap{max-width:760px;margin:auto;background:white;min-height:100vh}.hero{width:100%;display:block}.box{padding:22px}.box h1{font-size:25px;margin:0 0 8px}.box p{line-height:1.6;color:#52647a}.grid{display:grid;gap:12px}label{font-weight:700;font-size:14px}input,select{width:100%;padding:14px;border:1px solid #ccd6e2;border-radius:10px;font-size:16px;margin-top:6px}button{width:100%;padding:16px;border:0;border-radius:12px;background:#082b5c;color:white;font-size:17px;font-weight:800;margin-top:10px;cursor:pointer}.status{margin-top:12px;padding:12px;border-radius:10px;background:#f2f6fa;display:none}.note{font-size:12px;color:#6d7d90;margin-top:12px;line-height:1.5}
+</style>
+</head>
+<body><main class="wrap">
+<img class="hero" src="https://grjwhhkubrcyevwj.public.blob.vercel-storage.com/ch-ashen-kappa-kakao-thumbnail.jpg" alt="자동차보험 전 보험사 비교">
+<section class="box"><h1>30초 설문으로 전 보험사 비교하기</h1><p>아래 정보를 남겨주시면 자동차보험 비교 상담 접수가 전달됩니다.</p>
+<form id="f" class="grid">
+<label>차량번호<input id="carNo" required placeholder="예: 12가3456"></label>
+<label>보험 만기일<input id="expiry" required type="date"></label>
+<label>차량 소유주 성함<input id="owner" required></label>
+<label>연락처<input id="phone" required inputmode="tel" placeholder="010-0000-0000"></label>
+<label>주민번호 확인 방법<select id="rrnMethod" required><option value="">선택해주세요</option><option>상담 시 전화로 확인</option><option>상담 시 별도 전달</option></select></label>
+<button id="send" type="submit">비교견적 상담 신청</button>
+</form><div id="status" class="status"></div><div class="note">주민등록번호 전체는 이 페이지에서 입력받거나 문자로 전송하지 않습니다.</div></section>
+</main>
+<script>
+const f=document.getElementById('f'),statusEl=document.getElementById('status'),btn=document.getElementById('send');
+f.addEventListener('submit',async e=>{e.preventDefault();btn.disabled=true;btn.textContent='접수 중...';statusEl.style.display='none';try{const payload={carNo:carNo.value.trim(),expiry:expiry.value,owner:owner.value.trim(),phone:phone.value.trim(),rrnMethod:rrnMethod.value,source:'자동차보험 전 보험사 비교'};const r=await fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const d=await r.json().catch(()=>({}));if(!r.ok||!d.ok)throw new Error(d.error||'접수 중 오류가 발생했습니다.');statusEl.textContent='접수가 완료되었습니다. 확인 후 연락드리겠습니다.';statusEl.style.display='block';f.reset()}catch(err){statusEl.textContent='접수 실패: '+err.message;statusEl.style.display='block'}finally{btn.disabled=false;btn.textContent='비교견적 상담 신청'}});
+</script></body></html>
